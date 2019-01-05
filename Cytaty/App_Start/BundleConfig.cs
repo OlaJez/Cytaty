@@ -8,6 +8,8 @@ namespace Cytaty
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+
+            //bibliotekaJS
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -18,13 +20,13 @@ namespace Cytaty
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
-
+            //odpowiada za responsywnosc strony
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
-
+            //JS i CSS. Content - moje.
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.css", //pliki dostarczone przez twittera, szablon, nie do modyfikacji raczej
+                      "~/Content/site.css")); //formatowanie stricte - moje style
         }
     }
 }

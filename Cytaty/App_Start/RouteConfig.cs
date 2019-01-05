@@ -7,6 +7,8 @@ using System.Web.Routing;
 
 namespace Cytaty
 {
+
+    //plik definiuje router, jak serwer ma przetwarzać moje żadanie
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)

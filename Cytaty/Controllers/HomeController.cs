@@ -15,7 +15,7 @@ namespace Cytaty.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "O nas. Tutaj moge opisać cos tam o nas.";
 
             return View();
         }

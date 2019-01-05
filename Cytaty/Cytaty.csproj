@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -174,14 +176,46 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CytatyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyslicieleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Cytaty Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cytaty Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cytaty Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cytaty Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cytaty Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cytaty Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cytaty.cs">
+      <DependentUpon>Cytaty Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Mysliciele.cs">
+      <DependentUpon>Cytaty Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SlowaKluczoweWCytatach.cs">
+      <DependentUpon>Cytaty Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SłowaKluczowe.cs">
+      <DependentUpon>Cytaty Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Utwory.cs">
+      <DependentUpon>Cytaty Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -194,8 +228,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Cytaty Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Cytaty Model.edmx</DependentUpon>
+      <LastGenOutput>Cytaty Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Cytaty Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Cytaty Model.edmx</DependentUpon>
+      <LastGenOutput>Cytaty Model.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Cytaty Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Cytaty Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Cytaty Model.edmx.diagram">
+      <DependentUpon>Cytaty Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -241,6 +292,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Mysliciele\Create.cshtml" />
+    <Content Include="Views\Mysliciele\Delete.cshtml" />
+    <Content Include="Views\Mysliciele\Details.cshtml" />
+    <Content Include="Views\Mysliciele\Edit.cshtml" />
+    <Content Include="Views\Mysliciele\Index.cshtml" />
+    <Content Include="Views\Cytaty\Create.cshtml" />
+    <Content Include="Views\Cytaty\Delete.cshtml" />
+    <Content Include="Views\Cytaty\Details.cshtml" />
+    <Content Include="Views\Cytaty\Edit.cshtml" />
+    <Content Include="Views\Cytaty\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -258,6 +319,9 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -274,9 +338,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55592</DevelopmentServerPort>
+          <DevelopmentServerPort>55593</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55592/</IISUrl>
+          <IISUrl>http://localhost:55593/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

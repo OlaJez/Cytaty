@@ -1,0 +1,72 @@
+﻿@model Cytaty.Models.Cytaty
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Cytaty</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cytat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cytat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_SlowoKlucz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_SlowoKlucz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_User)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_User)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDodania)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDodania)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataEdycji)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEdycji)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mysliciele.Mysliciel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mysliciele.Mysliciel)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

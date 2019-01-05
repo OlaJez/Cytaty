@@ -13,6 +13,8 @@ using Microsoft.Owin.Security;
 using Cytaty.Models;
 
 namespace Cytaty
+
+    //konfiguracja uwierzytelnienia
 {
     public class EmailService : IIdentityMessageService
     {

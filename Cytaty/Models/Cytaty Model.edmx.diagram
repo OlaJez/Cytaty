@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1f4660ba04c3449a8aabd16af6a3ae06" Name="Diagram1">
+        <EntityTypeShape EntityType="NamespaceBazaCytaty.Cytaty" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NamespaceBazaCytaty.Mysliciele" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NamespaceBazaCytaty.SlowaKluczoweWCytatach" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NamespaceBazaCytaty.SłowaKluczowe" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NamespaceBazaCytaty.Utwory" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="NamespaceBazaCytaty.FK_Cytaty_Mysliciele" ManuallyRouted="false" />
+        <AssociationConnector Association="NamespaceBazaCytaty.FK_SlowaKluczoweWCytatach_Cytaty" ManuallyRouted="false" />
+        <AssociationConnector Association="NamespaceBazaCytaty.FK_Utwory_Mysliciele" ManuallyRouted="false" />
+        <AssociationConnector Association="NamespaceBazaCytaty.FK_SlowaKluczoweWCytatach_SłowaKluczowe" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

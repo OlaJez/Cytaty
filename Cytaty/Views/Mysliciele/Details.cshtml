@@ -1,0 +1,58 @@
+﻿@model Cytaty.Models.Mysliciele
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Mysliciele</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Mysliciel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mysliciel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lata_życia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lata_życia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Biogram)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Biogram)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDodania)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDodania)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataEdycji)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEdycji)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Mysliciel }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Cytaty.Models.Mysliciele>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mysliciel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lata_życia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Biogram)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDodania)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataEdycji)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mysliciel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lata_życia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Biogram)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDodania)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataEdycji)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Mysliciel }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Mysliciel }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Mysliciel })
+        </td>
+    </tr>
+}
+
+</table>

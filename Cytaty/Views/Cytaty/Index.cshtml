@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Cytaty.Models.Cytaty>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cytat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_SlowoKlucz)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_User)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDodania)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataEdycji)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mysliciele.Mysliciel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cytat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_SlowoKlucz)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_User)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDodania)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataEdycji)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mysliciele.Mysliciel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Cytat }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Cytat }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Cytat })
+        </td>
+    </tr>
+}
+
+</table>

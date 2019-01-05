@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NamespaceBazaCytaty.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cytaty">
+          <Key>
+            <PropertyRef Name="ID_Cytat" />
+          </Key>
+          <Property Name="ID_Cytat" Type="int" Nullable="false" />
+          <Property Name="Cytat" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ID_Mysliciel" Type="int" Nullable="false" />
+          <Property Name="ID_SlowoKlucz" Type="int" />
+          <Property Name="ID_User" Type="int" />
+          <Property Name="DataDodania" Type="datetime2" Precision="7" />
+          <Property Name="DataEdycji" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Mysliciele">
+          <Key>
+            <PropertyRef Name="ID_Mysliciel" />
+          </Key>
+          <Property Name="ID_Mysliciel" Type="int" Nullable="false" />
+          <Property Name="Mysliciel" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Lata_życia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Biogram" Type="nvarchar(max)" />
+          <Property Name="DataDodania" Type="datetime2" Precision="7" />
+          <Property Name="DataEdycji" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="SlowaKluczoweWCytatach">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_Cytat" Type="int" Nullable="false" />
+          <Property Name="ID_SlowoKlucz" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SłowaKluczowe">
+          <Key>
+            <PropertyRef Name="ID_SlowoKlucz" />
+          </Key>
+          <Property Name="ID_SlowoKlucz" Type="int" Nullable="false" />
+          <Property Name="Tag" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utwory">
+          <Key>
+            <PropertyRef Name="ID_Utwor" />
+          </Key>
+          <Property Name="ID_Utwor" Type="int" Nullable="false" />
+          <Property Name="Tytuł" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RokWydania" Type="int" />
+          <Property Name="ID_Mysliciel" Type="int" />
+        </EntityType>
+        <Association Name="FK_Cytaty_Mysliciele">
+          <End Role="Mysliciele" Type="Self.Mysliciele" Multiplicity="1" />
+          <End Role="Cytaty" Type="Self.Cytaty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mysliciele">
+              <PropertyRef Name="ID_Mysliciel" />
+            </Principal>
+            <Dependent Role="Cytaty">
+              <PropertyRef Name="ID_Mysliciel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SlowaKluczoweWCytatach_Cytaty">
+          <End Role="Cytaty" Type="Self.Cytaty" Multiplicity="1" />
+          <End Role="SlowaKluczoweWCytatach" Type="Self.SlowaKluczoweWCytatach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cytaty">
+              <PropertyRef Name="ID_Cytat" />
+            </Principal>
+            <Dependent Role="SlowaKluczoweWCytatach">
+              <PropertyRef Name="ID_Cytat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SlowaKluczoweWCytatach_SłowaKluczowe">
+          <End Role="SłowaKluczowe" Type="Self.SłowaKluczowe" Multiplicity="1" />
+          <End Role="SlowaKluczoweWCytatach" Type="Self.SlowaKluczoweWCytatach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SłowaKluczowe">
+              <PropertyRef Name="ID_SlowoKlucz" />
+            </Principal>
+            <Dependent Role="SlowaKluczoweWCytatach">
+              <PropertyRef Name="ID_SlowoKlucz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utwory_Mysliciele">
+          <End Role="Mysliciele" Type="Self.Mysliciele" Multiplicity="0..1" />
+          <End Role="Utwory" Type="Self.Utwory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mysliciele">
+              <PropertyRef Name="ID_Mysliciel" />
+            </Principal>
+            <Dependent Role="Utwory">
+              <PropertyRef Name="ID_Mysliciel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NamespaceBazaCytatyStoreContainer">
+          <EntitySet Name="Cytaty" EntityType="Self.Cytaty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mysliciele" EntityType="Self.Mysliciele" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SlowaKluczoweWCytatach" EntityType="Self.SlowaKluczoweWCytatach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SłowaKluczowe" EntityType="Self.SłowaKluczowe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utwory" EntityType="Self.Utwory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cytaty_Mysliciele" Association="Self.FK_Cytaty_Mysliciele">
+            <End Role="Mysliciele" EntitySet="Mysliciele" />
+            <End Role="Cytaty" EntitySet="Cytaty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SlowaKluczoweWCytatach_Cytaty" Association="Self.FK_SlowaKluczoweWCytatach_Cytaty">
+            <End Role="Cytaty" EntitySet="Cytaty" />
+            <End Role="SlowaKluczoweWCytatach" EntitySet="SlowaKluczoweWCytatach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SlowaKluczoweWCytatach_SłowaKluczowe" Association="Self.FK_SlowaKluczoweWCytatach_SłowaKluczowe">
+            <End Role="SłowaKluczowe" EntitySet="SłowaKluczowe" />
+            <End Role="SlowaKluczoweWCytatach" EntitySet="SlowaKluczoweWCytatach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utwory_Mysliciele" Association="Self.FK_Utwory_Mysliciele">
+            <End Role="Mysliciele" EntitySet="Mysliciele" />
+            <End Role="Utwory" EntitySet="Utwory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NamespaceBazaCytaty" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cytaty">
+          <Key>
+            <PropertyRef Name="ID_Cytat" />
+          </Key>
+          <Property Name="ID_Cytat" Type="Int32" Nullable="false" />
+          <Property Name="Cytat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Mysliciel" Type="Int32" Nullable="false" />
+          <Property Name="ID_SlowoKlucz" Type="Int32" />
+          <Property Name="ID_User" Type="Int32" />
+          <Property Name="DataDodania" Type="DateTime" Precision="7" />
+          <Property Name="DataEdycji" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Mysliciele" Relationship="Self.FK_Cytaty_Mysliciele" FromRole="Cytaty" ToRole="Mysliciele" />
+          <NavigationProperty Name="SlowaKluczoweWCytatach" Relationship="Self.FK_SlowaKluczoweWCytatach_Cytaty" FromRole="Cytaty" ToRole="SlowaKluczoweWCytatach" />
+        </EntityType>
+        <EntityType Name="Mysliciele">
+          <Key>
+            <PropertyRef Name="ID_Mysliciel" />
+          </Key>
+          <Property Name="ID_Mysliciel" Type="Int32" Nullable="false" />
+          <Property Name="Mysliciel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lata_życia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Biogram" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataDodania" Type="DateTime" Precision="7" />
+          <Property Name="DataEdycji" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Cytaty" Relationship="Self.FK_Cytaty_Mysliciele" FromRole="Mysliciele" ToRole="Cytaty" />
+          <NavigationProperty Name="Utwory" Relationship="Self.FK_Utwory_Mysliciele" FromRole="Mysliciele" ToRole="Utwory" />
+        </EntityType>
+        <EntityType Name="SlowaKluczoweWCytatach">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Cytat" Type="Int32" Nullable="false" />
+          <Property Name="ID_SlowoKlucz" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cytaty" Relationship="Self.FK_SlowaKluczoweWCytatach_Cytaty" FromRole="SlowaKluczoweWCytatach" ToRole="Cytaty" />
+          <NavigationProperty Name="SłowaKluczowe" Relationship="Self.FK_SlowaKluczoweWCytatach_SłowaKluczowe" FromRole="SlowaKluczoweWCytatach" ToRole="SłowaKluczowe" />
+        </EntityType>
+        <EntityType Name="SłowaKluczowe">
+          <Key>
+            <PropertyRef Name="ID_SlowoKlucz" />
+          </Key>
+          <Property Name="ID_SlowoKlucz" Type="Int32" Nullable="false" />
+          <Property Name="Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SlowaKluczoweWCytatach" Relationship="Self.FK_SlowaKluczoweWCytatach_SłowaKluczowe" FromRole="SłowaKluczowe" ToRole="SlowaKluczoweWCytatach" />
+        </EntityType>
+        <EntityType Name="Utwory">
+          <Key>
+            <PropertyRef Name="ID_Utwor" />
+          </Key>
+          <Property Name="ID_Utwor" Type="Int32" Nullable="false" />
+          <Property Name="Tytuł" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RokWydania" Type="Int32" />
+          <Property Name="ID_Mysliciel" Type="Int32" />
+          <NavigationProperty Name="Mysliciele" Relationship="Self.FK_Utwory_Mysliciele" FromRole="Utwory" ToRole="Mysliciele" />
+        </EntityType>
+        <Association Name="FK_Cytaty_Mysliciele">
+          <End Role="Mysliciele" Type="Self.Mysliciele" Multiplicity="1" />
+          <End Role="Cytaty" Type="Self.Cytaty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mysliciele">
+              <PropertyRef Name="ID_Mysliciel" />
+            </Principal>
+            <Dependent Role="Cytaty">
+              <PropertyRef Name="ID_Mysliciel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SlowaKluczoweWCytatach_Cytaty">
+          <End Role="Cytaty" Type="Self.Cytaty" Multiplicity="1" />
+          <End Role="SlowaKluczoweWCytatach" Type="Self.SlowaKluczoweWCytatach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cytaty">
+              <PropertyRef Name="ID_Cytat" />
+            </Principal>
+            <Dependent Role="SlowaKluczoweWCytatach">
+              <PropertyRef Name="ID_Cytat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Utwory_Mysliciele">
+          <End Role="Mysliciele" Type="Self.Mysliciele" Multiplicity="0..1" />
+          <End Role="Utwory" Type="Self.Utwory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mysliciele">
+              <PropertyRef Name="ID_Mysliciel" />
+            </Principal>
+            <Dependent Role="Utwory">
+              <PropertyRef Name="ID_Mysliciel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SlowaKluczoweWCytatach_SłowaKluczowe">
+          <End Role="SłowaKluczowe" Type="Self.SłowaKluczowe" Multiplicity="1" />
+          <End Role="SlowaKluczoweWCytatach" Type="Self.SlowaKluczoweWCytatach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SłowaKluczowe">
+              <PropertyRef Name="ID_SlowoKlucz" />
+            </Principal>
+            <Dependent Role="SlowaKluczoweWCytatach">
+              <PropertyRef Name="ID_SlowoKlucz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ConnectionBazaCytaty" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cytaty" EntityType="Self.Cytaty" />
+          <EntitySet Name="Mysliciele" EntityType="Self.Mysliciele" />
+          <EntitySet Name="SlowaKluczoweWCytatach" EntityType="Self.SlowaKluczoweWCytatach" />
+          <EntitySet Name="SłowaKluczowe" EntityType="Self.SłowaKluczowe" />
+          <EntitySet Name="Utwory" EntityType="Self.Utwory" />
+          <AssociationSet Name="FK_Cytaty_Mysliciele" Association="Self.FK_Cytaty_Mysliciele">
+            <End Role="Mysliciele" EntitySet="Mysliciele" />
+            <End Role="Cytaty" EntitySet="Cytaty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SlowaKluczoweWCytatach_Cytaty" Association="Self.FK_SlowaKluczoweWCytatach_Cytaty">
+            <End Role="Cytaty" EntitySet="Cytaty" />
+            <End Role="SlowaKluczoweWCytatach" EntitySet="SlowaKluczoweWCytatach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Utwory_Mysliciele" Association="Self.FK_Utwory_Mysliciele">
+            <End Role="Mysliciele" EntitySet="Mysliciele" />
+            <End Role="Utwory" EntitySet="Utwory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SlowaKluczoweWCytatach_SłowaKluczowe" Association="Self.FK_SlowaKluczoweWCytatach_SłowaKluczowe">
+            <End Role="SłowaKluczowe" EntitySet="SłowaKluczowe" />
+            <End Role="SlowaKluczoweWCytatach" EntitySet="SlowaKluczoweWCytatach" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NamespaceBazaCytatyStoreContainer" CdmEntityContainer="ConnectionBazaCytaty">
+          <EntitySetMapping Name="Cytaty">
+            <EntityTypeMapping TypeName="NamespaceBazaCytaty.Cytaty">
+              <MappingFragment StoreEntitySet="Cytaty">
+                <ScalarProperty Name="ID_Cytat" ColumnName="ID_Cytat" />
+                <ScalarProperty Name="Cytat" ColumnName="Cytat" />
+                <ScalarProperty Name="ID_Mysliciel" ColumnName="ID_Mysliciel" />
+                <ScalarProperty Name="ID_SlowoKlucz" ColumnName="ID_SlowoKlucz" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
+                <ScalarProperty Name="DataEdycji" ColumnName="DataEdycji" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mysliciele">
+            <EntityTypeMapping TypeName="NamespaceBazaCytaty.Mysliciele">
+              <MappingFragment StoreEntitySet="Mysliciele">
+                <ScalarProperty Name="ID_Mysliciel" ColumnName="ID_Mysliciel" />
+                <ScalarProperty Name="Mysliciel" ColumnName="Mysliciel" />
+                <ScalarProperty Name="Lata_życia" ColumnName="Lata_życia" />
+                <ScalarProperty Name="Biogram" ColumnName="Biogram" />
+                <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
+                <ScalarProperty Name="DataEdycji" ColumnName="DataEdycji" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlowaKluczoweWCytatach">
+            <EntityTypeMapping TypeName="NamespaceBazaCytaty.SlowaKluczoweWCytatach">
+              <MappingFragment StoreEntitySet="SlowaKluczoweWCytatach">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Cytat" ColumnName="ID_Cytat" />
+                <ScalarProperty Name="ID_SlowoKlucz" ColumnName="ID_SlowoKlucz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SłowaKluczowe">
+            <EntityTypeMapping TypeName="NamespaceBazaCytaty.SłowaKluczowe">
+              <MappingFragment StoreEntitySet="SłowaKluczowe">
+                <ScalarProperty Name="ID_SlowoKlucz" ColumnName="ID_SlowoKlucz" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utwory">
+            <EntityTypeMapping TypeName="NamespaceBazaCytaty.Utwory">
+              <MappingFragment StoreEntitySet="Utwory">
+                <ScalarProperty Name="ID_Utwor" ColumnName="ID_Utwor" />
+                <ScalarProperty Name="Tytuł" ColumnName="Tytuł" />
+                <ScalarProperty Name="RokWydania" ColumnName="RokWydania" />
+                <ScalarProperty Name="ID_Mysliciel" ColumnName="ID_Mysliciel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
