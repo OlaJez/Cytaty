@@ -25,6 +25,7 @@ namespace Cytaty
                       "~/Scripts/bootstrap.js"));
             //JS i CSS. Content - moje.
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                    "~/Content/WyszukiwarkaStyle.css",
                       "~/Content/bootstrap.css", //pliki dostarczone przez twittera, szablon, nie do modyfikacji raczej
                       "~/Content/site.css")); //formatowanie stricte - moje style
         }

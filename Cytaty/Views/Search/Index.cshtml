@@ -5,6 +5,12 @@
     ViewBag.Title = "Wyszukiwarka";
 }
 
+<h2 class="podtytul-stronaglowna">
+    Wyszukiwarka cytatów.
+</h2>
+
+
+
 @* formularz *@
 
 @using (Html.BeginForm())
@@ -12,12 +18,15 @@
 
     @*zabezpieczenie przed atakami*@
     @Html.AntiForgeryToken()
-    <div class="form-group">
-        @Html.DisplayNameFor(model => model.zapytanie)
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.zapytanie, new { htmlAttributes = new { @class = "form-control ola" } })
-        </div>
-    </div>
+
+
+<div class="wyszukiwarka-edit">
+   
+    @Html.EditorFor(model => model.zapytanie, new { htmlAttributes = new { @class = "form-control ola" } })
+
+</div>
+
+
 
 
     <div class="form-group">
