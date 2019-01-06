@@ -180,42 +180,45 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyslicieleController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UtworyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Cytaty Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Cytaty Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Cytaty Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Cytaty Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Cytaty Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Cytaty Model.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Cytaty.cs">
-      <DependentUpon>Cytaty Model.tt</DependentUpon>
+      <DependentUpon>Model_ADO_BazaDanych.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Model_ADO_BazaDanych.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_ADO_BazaDanych.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model_ADO_BazaDanych.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_ADO_BazaDanych.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model_ADO_BazaDanych.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_ADO_BazaDanych.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Mysliciele.cs">
-      <DependentUpon>Cytaty Model.tt</DependentUpon>
+      <DependentUpon>Model_ADO_BazaDanych.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SlowaKluczoweWCytatach.cs">
-      <DependentUpon>Cytaty Model.tt</DependentUpon>
+      <DependentUpon>Model_ADO_BazaDanych.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SłowaKluczowe.cs">
-      <DependentUpon>Cytaty Model.tt</DependentUpon>
+      <DependentUpon>Model_ADO_BazaDanych.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Utwory.cs">
-      <DependentUpon>Cytaty Model.tt</DependentUpon>
+      <DependentUpon>Model_ADO_BazaDanych.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ZapytanieWyszukiwarka.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -228,24 +231,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Cytaty Model.Context.tt">
+    <Content Include="Models\Model_ADO_BazaDanych.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Cytaty Model.edmx</DependentUpon>
-      <LastGenOutput>Cytaty Model.Context.cs</LastGenOutput>
+      <DependentUpon>Model_ADO_BazaDanych.edmx</DependentUpon>
+      <LastGenOutput>Model_ADO_BazaDanych.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Cytaty Model.tt">
+    <Content Include="Models\Model_ADO_BazaDanych.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Cytaty Model.edmx</DependentUpon>
-      <LastGenOutput>Cytaty Model.cs</LastGenOutput>
+      <DependentUpon>Model_ADO_BazaDanych.edmx</DependentUpon>
+      <LastGenOutput>Model_ADO_BazaDanych.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Cytaty Model.edmx">
+    <EntityDeploy Include="Models\Model_ADO_BazaDanych.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Cytaty Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model_ADO_BazaDanych.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Cytaty Model.edmx.diagram">
-      <DependentUpon>Cytaty Model.edmx</DependentUpon>
+    <Content Include="Models\Model_ADO_BazaDanych.edmx.diagram">
+      <DependentUpon>Model_ADO_BazaDanych.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -297,11 +300,18 @@
     <Content Include="Views\Mysliciele\Details.cshtml" />
     <Content Include="Views\Mysliciele\Edit.cshtml" />
     <Content Include="Views\Mysliciele\Index.cshtml" />
+    <Content Include="Views\Utwory\Create.cshtml" />
+    <Content Include="Views\Utwory\Delete.cshtml" />
+    <Content Include="Views\Utwory\Details.cshtml" />
+    <Content Include="Views\Utwory\Edit.cshtml" />
+    <Content Include="Views\Utwory\Index.cshtml" />
     <Content Include="Views\Cytaty\Create.cshtml" />
     <Content Include="Views\Cytaty\Delete.cshtml" />
     <Content Include="Views\Cytaty\Details.cshtml" />
     <Content Include="Views\Cytaty\Edit.cshtml" />
     <Content Include="Views\Cytaty\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

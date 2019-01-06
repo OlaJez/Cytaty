@@ -12,7 +12,7 @@ namespace Cytaty.Controllers
 {
     public class MyslicieleController : Controller
     {
-        private ConnectionBazaCytaty db = new ConnectionBazaCytaty();
+        private CytatyConnection db = new CytatyConnection();
 
         // GET: Mysliciele
         public ActionResult Index()

@@ -22,9 +22,8 @@ namespace Cytaty.Models
     
         public int ID_Cytat { get; set; }
         public string Cytat { get; set; }
-        public int ID_Mysliciel { get; set; }
+        public Nullable<int> ID_Mysliciel { get; set; }
         public Nullable<int> ID_SlowoKlucz { get; set; }
-        public Nullable<int> ID_User { get; set; }
         public Nullable<System.DateTime> DataDodania { get; set; }
         public Nullable<System.DateTime> DataEdycji { get; set; }
     

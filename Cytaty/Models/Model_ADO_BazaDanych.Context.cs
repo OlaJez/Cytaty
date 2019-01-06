@@ -13,10 +13,10 @@ namespace Cytaty.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ConnectionBazaCytaty : DbContext
+    public partial class CytatyConnection : DbContext
     {
-        public ConnectionBazaCytaty()
-            : base("name=ConnectionBazaCytaty")
+        public CytatyConnection()
+            : base("name=CytatyConnection")
         {
         }
     

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="555a632ab6a54596996d6922d1faf765" Name="Diagram1">
+        <EntityTypeShape EntityType="CytatyModel.Cytaty" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CytatyModel.Mysliciele" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CytatyModel.SlowaKluczoweWCytatach" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CytatyModel.SłowaKluczowe" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CytatyModel.Utwory" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="CytatyModel.FK_Cytaty_Mysliciele" ManuallyRouted="false" />
+        <AssociationConnector Association="CytatyModel.FK_SlowaKluczoweWCytatach_Cytaty" ManuallyRouted="false" />
+        <AssociationConnector Association="CytatyModel.FK_Utwory_Mysliciele" ManuallyRouted="false" />
+        <AssociationConnector Association="CytatyModel.FK_SlowaKluczoweWCytatach_SłowaKluczowe" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,13 +1,14 @@
 ﻿@model Cytaty.Models.Cytaty
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Informacje o cytacie";
 }
 
-<h2>Details</h2>
+<h2>O cytacie</h2>
 
 <div>
-    <h4>Cytaty</h4>
+   
+    <hr />
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,23 +20,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ID_SlowoKlucz)
+            @Html.LabelFor(model => model.ID_SlowoKlucz, "Słowa kluczowe")
+
+            @*@Html.DisplayNameFor(model => model.ID_SlowoKlucz)*@
         </dt>
+
 
         <dd>
             @Html.DisplayFor(model => model.ID_SlowoKlucz)
+
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ID_User)
-        </dt>
+            @Html.LabelFor(model => model.DataDodania, "Data Dodania")
+        
 
-        <dd>
-            @Html.DisplayFor(model => model.ID_User)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataDodania)
         </dt>
 
         <dd>
@@ -43,7 +42,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DataEdycji)
+            @Html.LabelFor(model => model.DataEdycji, "Data ostatniej edycji")
+       
         </dt>
 
         <dd>
@@ -51,7 +51,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Mysliciele.Mysliciel)
+            @Html.LabelFor(model => model.Mysliciele.Mysliciel, "Myśliciel")
+
         </dt>
 
         <dd>
@@ -59,8 +60,9 @@
         </dd>
 
     </dl>
+
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Cytat }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.ID_Cytat }) |
+    @Html.ActionLink("Wróć do listy", "Index")
 </p>

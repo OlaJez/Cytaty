@@ -1,0 +1,42 @@
+﻿@model Cytaty.Models.Utwory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Utwory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tytuł)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tytuł)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RokWydania)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RokWydania)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mysliciele.Mysliciel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mysliciele.Mysliciel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Utwor }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

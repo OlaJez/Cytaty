@@ -10,121 +10,112 @@ using Cytaty.Models;
 
 namespace Cytaty.Controllers
 {
-    public class CytatyController : Controller
+    public class UtworyController : Controller
     {
         private CytatyConnection db = new CytatyConnection();
 
-        // GET: Cytaty
+        // GET: Utwory
         public ActionResult Index()
         {
-            var cytaty = db.Cytaty.Include(c => c.Mysliciele);
-            return View(cytaty.ToList());
+            var utwory = db.Utwory.Include(u => u.Mysliciele);
+            return View(utwory.ToList());
         }
 
-       
-
-        // GET: Cytaty/Details/5
+        // GET: Utwory/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cytaty.Models.Cytaty cytaty = db.Cytaty.Find(id);
-            if (cytaty == null)
+            Utwory utwory = db.Utwory.Find(id);
+            if (utwory == null)
             {
                 return HttpNotFound();
             }
-            return View(cytaty);
+            return View(utwory);
         }
 
-        // GET: Cytaty/Create
+        // GET: Utwory/Create
         public ActionResult Create()
         {
             ViewBag.ID_Mysliciel = new SelectList(db.Mysliciele, "ID_Mysliciel", "Mysliciel");
-            ViewBag.ID_SlowoKlucz = new SelectList(db.SłowaKluczowe, "ID_SlowoKlucz", "Tag");
             return View();
-           
         }
 
-
-        // POST: Cytaty/Create
+        // POST: Utwory/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_Cytat,Cytat,ID_Mysliciel,ID_SlowoKlucz,DataDodania,DataEdycji")] Cytaty.Models.Cytaty cytaty)
+        public ActionResult Create([Bind(Include = "ID_Utwor,Tytuł,RokWydania,ID_Mysliciel")] Utwory utwory)
         {
             if (ModelState.IsValid)
             {
-                cytaty.DataDodania = DateTime.Now;
-                cytaty.DataEdycji = DateTime.Now;
-                db.Cytaty.Add(cytaty);
+                db.Utwory.Add(utwory);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ID_Mysliciel = new SelectList(db.Mysliciele, "ID_Mysliciel", "Mysliciel", cytaty.ID_Mysliciel);
-            return View(cytaty);
+            ViewBag.ID_Mysliciel = new SelectList(db.Mysliciele, "ID_Mysliciel", "Mysliciel", utwory.ID_Mysliciel);
+            return View(utwory);
         }
 
-        // GET: Cytaty/Edit/5
+        // GET: Utwory/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cytaty.Models.Cytaty cytaty = db.Cytaty.Find(id);
-            if (cytaty == null)
+            Utwory utwory = db.Utwory.Find(id);
+            if (utwory == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ID_Mysliciel = new SelectList(db.Mysliciele, "ID_Mysliciel", "Mysliciel", cytaty.ID_Mysliciel);
-            ViewBag.ID_SlowoKlucz = new SelectList(db.SłowaKluczowe, "ID_SlowoKlucz", "Tag");
-            return View(cytaty);
+            ViewBag.ID_Mysliciel = new SelectList(db.Mysliciele, "ID_Mysliciel", "Mysliciel", utwory.ID_Mysliciel);
+            return View(utwory);
         }
 
-        // POST: Cytaty/Edit/5
+        // POST: Utwory/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_Cytat,Cytat,ID_Mysliciel,ID_SlowoKlucz,DataDodania,DataEdycji")] Cytaty.Models.Cytaty cytaty)
+        public ActionResult Edit([Bind(Include = "ID_Utwor,Tytuł,RokWydania,ID_Mysliciel")] Utwory utwory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cytaty).State = EntityState.Modified;
-                cytaty.DataEdycji = DateTime.Now;
+                db.Entry(utwory).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ID_Mysliciel = new SelectList(db.Mysliciele, "ID_Mysliciel", "Mysliciel", cytaty.ID_Mysliciel);
-            return View(cytaty);
+            ViewBag.ID_Mysliciel = new SelectList(db.Mysliciele, "ID_Mysliciel", "Mysliciel", utwory.ID_Mysliciel);
+            return View(utwory);
         }
 
-        // GET: Cytaty/Delete/5
+        // GET: Utwory/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cytaty.Models.Cytaty cytaty = db.Cytaty.Find(id);
-            if (cytaty == null)
+            Utwory utwory = db.Utwory.Find(id);
+            if (utwory == null)
             {
                 return HttpNotFound();
             }
-            return View(cytaty);
+            return View(utwory);
         }
 
-        // POST: Cytaty/Delete/5
+        // POST: Utwory/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cytaty.Models.Cytaty cytaty = db.Cytaty.Find(id);
-            db.Cytaty.Remove(cytaty);
+            Utwory utwory = db.Utwory.Find(id);
+            db.Utwory.Remove(utwory);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,5 +1,8 @@
-﻿body {
+﻿
+
+body {
     padding-top: 50px;
+    background-color: lightsteelblue;
     padding-bottom: 20px;
 }
 
@@ -7,6 +10,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color:azure;
     
 }
 
@@ -22,4 +26,28 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+h2.podtytul-stronaglowna {
+    color: darkslateblue;
+    text-align: justify;
+    text-shadow: 2px 1px gray;
+   
+    font-size: 50px;
+}
+
+p.wyswietl-pojedynczy_cytat {
+    padding-top: 20px;
+    text-align: left;
+    font-style: italic;
+    color: darkslateblue;
+    font-weight: bold;
+}
+
+p.edycja_dodajnowycyt {
+    text-align: left;
+}
+
+footer {
+    text-align: right;
 }

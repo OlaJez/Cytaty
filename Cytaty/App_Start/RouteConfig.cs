@@ -18,7 +18,7 @@ namespace Cytaty
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Cytaty", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

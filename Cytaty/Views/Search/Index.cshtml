@@ -1,0 +1,32 @@
+﻿@model Cytaty.Models.ZapytanieWyszukiwarka
+
+
+@{
+    ViewBag.Title = "Wyszukiwarka";
+}
+
+@* formularz *@
+
+@using (Html.BeginForm())
+{
+
+    @*zabezpieczenie przed atakami*@
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.DisplayNameFor(model => model.zapytanie)
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.zapytanie, new { htmlAttributes = new { @class = "form-control ola" } })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Szukaj" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+
+

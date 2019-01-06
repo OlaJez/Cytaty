@@ -4,16 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NamespaceBazaCytaty.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CytatyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cytaty">
           <Key>
             <PropertyRef Name="ID_Cytat" />
           </Key>
-          <Property Name="ID_Cytat" Type="int" Nullable="false" />
+          <Property Name="ID_Cytat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Cytat" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="ID_Mysliciel" Type="int" Nullable="false" />
+          <Property Name="ID_Mysliciel" Type="int" />
           <Property Name="ID_SlowoKlucz" Type="int" />
-          <Property Name="ID_User" Type="int" />
           <Property Name="DataDodania" Type="datetime2" Precision="7" />
           <Property Name="DataEdycji" Type="datetime2" Precision="7" />
         </EntityType>
@@ -21,7 +20,7 @@
           <Key>
             <PropertyRef Name="ID_Mysliciel" />
           </Key>
-          <Property Name="ID_Mysliciel" Type="int" Nullable="false" />
+          <Property Name="ID_Mysliciel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Mysliciel" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Lata_życia" Type="nvarchar" MaxLength="50" />
           <Property Name="Biogram" Type="nvarchar(max)" />
@@ -32,7 +31,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Cytat" Type="int" Nullable="false" />
           <Property Name="ID_SlowoKlucz" Type="int" Nullable="false" />
         </EntityType>
@@ -40,20 +39,20 @@
           <Key>
             <PropertyRef Name="ID_SlowoKlucz" />
           </Key>
-          <Property Name="ID_SlowoKlucz" Type="int" Nullable="false" />
+          <Property Name="ID_SlowoKlucz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Tag" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Utwory">
           <Key>
             <PropertyRef Name="ID_Utwor" />
           </Key>
-          <Property Name="ID_Utwor" Type="int" Nullable="false" />
+          <Property Name="ID_Utwor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Tytuł" Type="nvarchar(max)" Nullable="false" />
           <Property Name="RokWydania" Type="int" />
           <Property Name="ID_Mysliciel" Type="int" />
         </EntityType>
         <Association Name="FK_Cytaty_Mysliciele">
-          <End Role="Mysliciele" Type="Self.Mysliciele" Multiplicity="1" />
+          <End Role="Mysliciele" Type="Self.Mysliciele" Multiplicity="0..1" />
           <End Role="Cytaty" Type="Self.Cytaty" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mysliciele">
@@ -100,7 +99,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="NamespaceBazaCytatyStoreContainer">
+        <EntityContainer Name="CytatyModelStoreContainer">
           <EntitySet Name="Cytaty" EntityType="Self.Cytaty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mysliciele" EntityType="Self.Mysliciele" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlowaKluczoweWCytatach" EntityType="Self.SlowaKluczoweWCytatach" Schema="dbo" store:Type="Tables" />
@@ -127,16 +126,15 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="NamespaceBazaCytaty" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CytatyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cytaty">
           <Key>
             <PropertyRef Name="ID_Cytat" />
           </Key>
-          <Property Name="ID_Cytat" Type="Int32" Nullable="false" />
+          <Property Name="ID_Cytat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Cytat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ID_Mysliciel" Type="Int32" Nullable="false" />
+          <Property Name="ID_Mysliciel" Type="Int32" />
           <Property Name="ID_SlowoKlucz" Type="Int32" />
-          <Property Name="ID_User" Type="Int32" />
           <Property Name="DataDodania" Type="DateTime" Precision="7" />
           <Property Name="DataEdycji" Type="DateTime" Precision="7" />
           <NavigationProperty Name="Mysliciele" Relationship="Self.FK_Cytaty_Mysliciele" FromRole="Cytaty" ToRole="Mysliciele" />
@@ -146,7 +144,7 @@
           <Key>
             <PropertyRef Name="ID_Mysliciel" />
           </Key>
-          <Property Name="ID_Mysliciel" Type="Int32" Nullable="false" />
+          <Property Name="ID_Mysliciel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Mysliciel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Lata_życia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Biogram" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -159,7 +157,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Cytat" Type="Int32" Nullable="false" />
           <Property Name="ID_SlowoKlucz" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cytaty" Relationship="Self.FK_SlowaKluczoweWCytatach_Cytaty" FromRole="SlowaKluczoweWCytatach" ToRole="Cytaty" />
@@ -169,7 +167,7 @@
           <Key>
             <PropertyRef Name="ID_SlowoKlucz" />
           </Key>
-          <Property Name="ID_SlowoKlucz" Type="Int32" Nullable="false" />
+          <Property Name="ID_SlowoKlucz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="SlowaKluczoweWCytatach" Relationship="Self.FK_SlowaKluczoweWCytatach_SłowaKluczowe" FromRole="SłowaKluczowe" ToRole="SlowaKluczoweWCytatach" />
         </EntityType>
@@ -177,14 +175,14 @@
           <Key>
             <PropertyRef Name="ID_Utwor" />
           </Key>
-          <Property Name="ID_Utwor" Type="Int32" Nullable="false" />
+          <Property Name="ID_Utwor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tytuł" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RokWydania" Type="Int32" />
           <Property Name="ID_Mysliciel" Type="Int32" />
           <NavigationProperty Name="Mysliciele" Relationship="Self.FK_Utwory_Mysliciele" FromRole="Utwory" ToRole="Mysliciele" />
         </EntityType>
         <Association Name="FK_Cytaty_Mysliciele">
-          <End Role="Mysliciele" Type="Self.Mysliciele" Multiplicity="1" />
+          <End Role="Mysliciele" Type="Self.Mysliciele" Multiplicity="0..1" />
           <End Role="Cytaty" Type="Self.Cytaty" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mysliciele">
@@ -231,7 +229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ConnectionBazaCytaty" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CytatyConnection" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cytaty" EntityType="Self.Cytaty" />
           <EntitySet Name="Mysliciele" EntityType="Self.Mysliciele" />
           <EntitySet Name="SlowaKluczoweWCytatach" EntityType="Self.SlowaKluczoweWCytatach" />
@@ -259,22 +257,21 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="NamespaceBazaCytatyStoreContainer" CdmEntityContainer="ConnectionBazaCytaty">
+        <EntityContainerMapping StorageEntityContainer="CytatyModelStoreContainer" CdmEntityContainer="CytatyConnection">
           <EntitySetMapping Name="Cytaty">
-            <EntityTypeMapping TypeName="NamespaceBazaCytaty.Cytaty">
+            <EntityTypeMapping TypeName="CytatyModel.Cytaty">
               <MappingFragment StoreEntitySet="Cytaty">
                 <ScalarProperty Name="ID_Cytat" ColumnName="ID_Cytat" />
                 <ScalarProperty Name="Cytat" ColumnName="Cytat" />
                 <ScalarProperty Name="ID_Mysliciel" ColumnName="ID_Mysliciel" />
                 <ScalarProperty Name="ID_SlowoKlucz" ColumnName="ID_SlowoKlucz" />
-                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
                 <ScalarProperty Name="DataDodania" ColumnName="DataDodania" />
                 <ScalarProperty Name="DataEdycji" ColumnName="DataEdycji" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mysliciele">
-            <EntityTypeMapping TypeName="NamespaceBazaCytaty.Mysliciele">
+            <EntityTypeMapping TypeName="CytatyModel.Mysliciele">
               <MappingFragment StoreEntitySet="Mysliciele">
                 <ScalarProperty Name="ID_Mysliciel" ColumnName="ID_Mysliciel" />
                 <ScalarProperty Name="Mysliciel" ColumnName="Mysliciel" />
@@ -286,7 +283,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SlowaKluczoweWCytatach">
-            <EntityTypeMapping TypeName="NamespaceBazaCytaty.SlowaKluczoweWCytatach">
+            <EntityTypeMapping TypeName="CytatyModel.SlowaKluczoweWCytatach">
               <MappingFragment StoreEntitySet="SlowaKluczoweWCytatach">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_Cytat" ColumnName="ID_Cytat" />
@@ -295,7 +292,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SłowaKluczowe">
-            <EntityTypeMapping TypeName="NamespaceBazaCytaty.SłowaKluczowe">
+            <EntityTypeMapping TypeName="CytatyModel.SłowaKluczowe">
               <MappingFragment StoreEntitySet="SłowaKluczowe">
                 <ScalarProperty Name="ID_SlowoKlucz" ColumnName="ID_SlowoKlucz" />
                 <ScalarProperty Name="Tag" ColumnName="Tag" />
@@ -303,7 +300,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Utwory">
-            <EntityTypeMapping TypeName="NamespaceBazaCytaty.Utwory">
+            <EntityTypeMapping TypeName="CytatyModel.Utwory">
               <MappingFragment StoreEntitySet="Utwory">
                 <ScalarProperty Name="ID_Utwor" ColumnName="ID_Utwor" />
                 <ScalarProperty Name="Tytuł" ColumnName="Tytuł" />

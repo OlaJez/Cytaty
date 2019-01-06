@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\PrzemysławJeżewski\Desktop\OLA\cytaty 3\Cytaty\Models\Cytaty Model.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\PrzemysławJeżewski\Desktop\OLA\cytaty 3\Cytaty\Models\Model_ADO_BazaDanych.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

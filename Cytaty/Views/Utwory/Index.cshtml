@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Cytaty.Models.Utwory>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tytuł)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RokWydania)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mysliciele.Mysliciel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tytuł)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RokWydania)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mysliciele.Mysliciel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Utwor }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Utwor }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Utwor })
+        </td>
+    </tr>
+}
+
+</table>

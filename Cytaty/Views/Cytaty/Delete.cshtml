@@ -1,14 +1,14 @@
 ﻿@model Cytaty.Models.Cytaty
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Usuń cytat";
 }
 
-<h2>Delete</h2>
+<h2>Usuń cytat</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Czy na pewno chcesz usunąć ten cytat?</h3>
 <div>
-    <h4>Cytaty</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,23 +20,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ID_SlowoKlucz)
+            @Html.LabelFor(model => model.ID_SlowoKlucz, "Słowa kluczowe")
+          
+            @*@Html.DisplayNameFor(model => model.ID_SlowoKlucz)*@
         </dt>
 
+        
         <dd>
             @Html.DisplayFor(model => model.ID_SlowoKlucz)
+
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ID_User)
-        </dt>
+            @Html.LabelFor(model => model.DataDodania, "Data Dodania")
+           @*@Html.DisplayNameFor(model => model.DataDodania)*@
 
-        <dd>
-            @Html.DisplayFor(model => model.ID_User)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataDodania)
         </dt>
 
         <dd>
@@ -44,7 +42,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DataEdycji)
+            @Html.LabelFor(model => model.DataEdycji, "Data ostatniej edycji")
+            @*@Html.DisplayNameFor(model => model.DataEdycji)*@
         </dt>
 
         <dd>
@@ -52,7 +51,9 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Mysliciele.Mysliciel)
+            @Html.LabelFor(model => model.Mysliciele.Mysliciel, "Myśliciel")
+
+            @*@Html.DisplayNameFor(model => model.Mysliciele.Mysliciel)*@
         </dt>
 
         <dd>
@@ -65,8 +66,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Wróć do listy", "Index")
         </div>
     }
 </div>
