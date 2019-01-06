@@ -4,13 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="podtytul-stronaglowna">Biogramy myślicieli</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p class="nowy-biogram">
+    @Html.ActionLink("Utwórz nowy biogram", "Create")
 </p>
 <table class="table">
-    <tr>
+    @*<tr>
         <th>
             @Html.DisplayNameFor(model => model.Mysliciel)
         </th>
@@ -27,7 +27,7 @@
             @Html.DisplayNameFor(model => model.DataEdycji)
         </th>
         <th></th>
-    </tr>
+    </tr>*@
 
 @foreach (var item in Model) {
     <tr>
