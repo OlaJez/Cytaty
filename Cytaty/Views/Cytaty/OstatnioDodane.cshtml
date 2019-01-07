@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Cytaty.Models.Cytaty>
+
+@{
+    ViewBag.Title = "Ostatnio Dodane";
+}
+
+<h2 class="podtytul-stronaglowna">
+    Ostatnio Dodane Cytaty
+</h2>
+
+<div class="wyswietl-wszystkie_cytaty">
+    @foreach (var item in Model)
+    {
+        <p class="wyswietl-pojedynczy_cytat">
+
+            
+            @Html.DisplayFor(modelItem => item.Cytat)
+        </p>
+
+        <span class="wyswietl-mysliciela">
+            @Html.ActionLink(item.Mysliciele.Mysliciel, "Details", "Mysliciele", new { id = item.Mysliciele.ID_Mysliciel }, null)
+
+        </span>
+
+        <span class="data-dodania"> 
+            @Html.DisplayFor(modelItem => item.DataDodania)
+    </span>
+
+    }
+</div>
+

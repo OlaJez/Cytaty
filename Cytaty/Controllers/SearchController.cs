@@ -24,16 +24,24 @@ namespace Cytaty.Controllers
 
         public ActionResult Index(Cytaty.Models.ZapytanieWyszukiwarka zapytanieUzytkownika)
         {
+        
             //jesli nie jest null
             if (ModelState.IsValid)
             {
                 CytatyConnection db = new CytatyConnection();
                 
-                //wyszukiwanie
-                var cytaty = db.Cytaty.Where(c => c.Cytat.Contains(zapytanieUzytkownika.zapytanie)||c.Mysliciele.Mysliciel.Contains(zapytanieUzytkownika.zapytanie) ).Include(c => c.Mysliciele);
-                return View("Result", cytaty);
+                //wyszukiwanie, potem zrzucam do listy zeby dzialalo count
+                var cytaty = db.Cytaty.Where(c => c.Cytat.Contains(zapytanieUzytkownika.zapytanie)||c.Mysliciele.Mysliciel.Contains(zapytanieUzytkownika.zapytanie) ).Include(c => c.Mysliciele).ToList();
+                if (cytaty.Count > 0)
+                {
+                    ViewBag.query = zapytanieUzytkownika.zapytanie;
+                    return View("Result", cytaty);
+                }
+                else
+                    return View("NiemaCytatu");
             }
 
+            
             return View(zapytanieUzytkownika);
         }
 

@@ -313,6 +313,13 @@
     <Content Include="Views\Cytaty\Index.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Search\Result.cshtml" />
+    <Content Include="Views\OstatnioDodaneCytaty\Create.cshtml" />
+    <Content Include="Views\OstatnioDodaneCytaty\Delete.cshtml" />
+    <Content Include="Views\OstatnioDodaneCytaty\Details.cshtml" />
+    <Content Include="Views\OstatnioDodaneCytaty\Edit.cshtml" />
+    <Content Include="Views\OstatnioDodaneCytaty\Index.cshtml" />
+    <Content Include="Views\Cytaty\OstatnioDodane.cshtml" />
+    <Content Include="Views\Search\NiemaCytatu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

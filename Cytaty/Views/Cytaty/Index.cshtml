@@ -45,7 +45,9 @@
     </p>
       
     <span class="wyswietl-mysliciela">
-        @Html.DisplayFor(modelItem => item.Mysliciele.Mysliciel)
+        @*@Html.DisplayFor(modelItem => item.Mysliciele.Mysliciel)*@
+        @Html.ActionLink(item.Mysliciele.Mysliciel, "Details", "Mysliciele", new { id = item.Mysliciele.ID_Mysliciel },null)
+   
 
     </span>
     //edycja możliwa po uwierzytelnieniu dostępu

@@ -11,47 +11,57 @@
 </p>
 <table class="table">
     @*<tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Mysliciel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lata_życia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Biogram)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataDodania)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataEdycji)
-        </th>
-        <th></th>
-    </tr>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Mysliciel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lata_życia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Biogram)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDodania)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataEdycji)
+            </th>
+            <th></th>
+        </tr>*@
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mysliciel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lata_życia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Biogram)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataDodania)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataEdycji)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Mysliciel }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_Mysliciel }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Mysliciel })
-        </td>
-    </tr>
-}
+    <div class="wyswietl-mysl">
+        @foreach (var item in Model)
+        {
+            <p class="wyswietl-pojedynczy_mysliciel">
+
+                @Html.DisplayFor(modelItem => item.Mysliciel)
+
+            </p>
+
+            <span class="wyswietl-latazycia">
+                @Html.DisplayFor(modelItem => item.Lata_życia)
+            </span>
+
+            <p class="wyswietl-biogram">
+                @Html.DisplayFor(modelItem => item.Biogram)
+            </p>
+
+
+            @*
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDodania)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEdycji)
+            </td>
+            <td>*@
+
+
+            <span class="edytuj-z-prawej">
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.ID_Mysliciel }) |
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.ID_Mysliciel }) |
+                @Html.ActionLink("Usuń", "Delete", new { id = item.ID_Mysliciel })
+            </span>
+        }
 
 </table>

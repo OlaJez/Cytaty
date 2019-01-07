@@ -31,8 +31,7 @@ textarea {
 h2.podtytul-stronaglowna {
     color: darkslateblue;
     text-align: justify;
-    text-shadow: 2px 1px gray;
-   
+    text-shadow: 2px 1px gray; 
     font-size: 50px;
 }
 
@@ -48,6 +47,17 @@ p.edycja_dodajnowycyt {
     text-align: left;
 }
 
+p.wyswietl-pojedynczy_mysliciel {
+    padding-top: 20px;
+    color: darkslateblue;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+span.wyswietl-latazycia {
+    font-style: italic;
+   
+}
 
 footer {
     text-align: right;

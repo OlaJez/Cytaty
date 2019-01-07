@@ -21,7 +21,15 @@ namespace Cytaty.Controllers
             return View(cytaty.ToList());
         }
 
-       
+        //do strony ostatnio dodane cytaty
+        public ActionResult OstatnioDodane()
+        {
+            var cytaty = db.Cytaty.Include(c => c.Mysliciele);
+            return View(cytaty.OrderByDescending(c=> c.DataDodania).Take(3));
+
+        }
+
+
 
         // GET: Cytaty/Details/5
         public ActionResult Details(int? id)

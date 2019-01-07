@@ -7,6 +7,7 @@ namespace Cytaty.Models
 {
     public class ZapytanieWyszukiwarka
     {
-        public string zapytanie { get; set; } 
+        public string zapytanie { get; set; }
+        
     }
 }
