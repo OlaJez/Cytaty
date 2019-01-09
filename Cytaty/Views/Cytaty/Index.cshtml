@@ -38,6 +38,8 @@
 <div class="wyswietl-wszystkie_cytaty">
     @foreach (var item in Model)
     {
+
+        <div class="opakowany-cytat">
     <p class="wyswietl-pojedynczy_cytat">
 
 
@@ -50,8 +52,8 @@
    
 
     </span>
-    //edycja możliwa po uwierzytelnieniu dostępu
-        if (Request.IsAuthenticated)
+    @*//edycja możliwa po uwierzytelnieniu dostępu*@
+        @if (Request.IsAuthenticated)
         {
           
     <span>
@@ -60,6 +62,7 @@
         @Html.ActionLink("Usuń", "Delete", new { id = item.ID_Cytat })
     </span>  
             }
+            </div>
 
         }
     </div>
