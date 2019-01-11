@@ -13,6 +13,7 @@ namespace Cytaty.Controllers
             return View();
         }
 
+        //nie jest zlinkowany, do zrobienia pozniej ewentualnie
         public ActionResult About()
         {
             ViewBag.Message = "O nas. Tutaj moge opisać cos tam o nas.";

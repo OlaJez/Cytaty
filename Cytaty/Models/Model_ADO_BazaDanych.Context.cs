@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
+//model generowany za pomoca Entity Framework - z mojej istniejacej bazy
 namespace Cytaty.Models
 {
     using System;

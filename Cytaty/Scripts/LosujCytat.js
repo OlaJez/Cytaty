@@ -1,4 +1,6 @@
-﻿function losujCytat() {
+﻿//wykorzystanie biblioteki jQuery $
+
+function losujCytat() {
     //podloga - odcina/ random od 0....1/* ilosc cytatow
     var wylosowany_cytat = Math.floor(Math.random() * $("div.opakowany-cytat").length);
     //ktory wylosowany
@@ -11,5 +13,5 @@
 
 losujCytat();
 
-//samo sie odswieza po 10 sek
+//samo sie odswieza po 3 sek
 setInterval(losujCytat, 3000);

@@ -28,7 +28,7 @@
                     <li>@Html.ActionLink("Ostatnio Dodane Cytaty", "OstatnioDodane", "Cytaty")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial") @*- dane do logowania, widok register i log in*@
+                @Html.Partial("_LoginPartial") @*- dane do logowania, widok register i log in, mozna ewentualne ukryc potem*@
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     
     
-    @* linkowanie pliku JS, ktory mam w projekcie*@
+    @* linkowanie pliku JS, ktory mam w projekcie, bo nie mam w bandlu*@
     <script src="~/Scripts/LosujCytat.js">
     </script>
     @RenderSection("scripts", required: false)

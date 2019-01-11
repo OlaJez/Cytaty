@@ -15,6 +15,7 @@ namespace Cytaty
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //domyslny kontroler i akcja
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

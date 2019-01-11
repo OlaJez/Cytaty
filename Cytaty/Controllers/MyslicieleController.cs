@@ -50,6 +50,8 @@ namespace Cytaty.Controllers
         {
             if (ModelState.IsValid)
             {
+                mysliciele.DataDodania = DateTime.Now;
+                mysliciele.DataEdycji = DateTime.Now;
                 db.Mysliciele.Add(mysliciele);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +84,8 @@ namespace Cytaty.Controllers
         {
             if (ModelState.IsValid)
             {
+              
+                mysliciele.DataEdycji = DateTime.Now;
                 db.Entry(mysliciele).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

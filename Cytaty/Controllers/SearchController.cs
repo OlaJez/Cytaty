@@ -30,19 +30,20 @@ namespace Cytaty.Controllers
             {
                 CytatyConnection db = new CytatyConnection();
                 
-                //wyszukiwanie, potem zrzucam do listy zeby dzialalo count
+                //wyszukiwanie, potem zrzucam do listy zeby dzialalo count //include zeby nie bylo tylko id mysliciela
                 var cytaty = db.Cytaty.Where(c => c.Cytat.Contains(zapytanieUzytkownika.zapytanie)||c.Mysliciele.Mysliciel.Contains(zapytanieUzytkownika.zapytanie) ).Include(c => c.Mysliciele).ToList();
+
+                //jest w liscie, mozna zrobic count
                 if (cytaty.Count > 0)
                 {
                     ViewBag.query = zapytanieUzytkownika.zapytanie;
-                    return View("Result", cytaty);
+                    return View("Result", cytaty); //przekazanie cytatow
                 }
                 else
                     return View("NiemaCytatu");
             }
 
-            
-            return View(zapytanieUzytkownika);
+
         }
 
     }

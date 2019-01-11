@@ -23,7 +23,7 @@ namespace Cytaty
             //odpowiada za responsywnosc strony
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
-            //JS i CSS. Content - moje.
+            //JS i CSS. Content - moje. grupowanie css,jv w jeden duzy plik
             bundles.Add(new StyleBundle("~/Content/css").Include(
                     "~/Content/WyszukiwarkaStyle.css",
                       "~/Content/bootstrap.css", //pliki dostarczone przez twittera, szablon, nie do modyfikacji raczej

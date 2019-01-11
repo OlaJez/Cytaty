@@ -14,14 +14,14 @@ namespace Cytaty.Controllers
     {
         private CytatyConnection db = new CytatyConnection();
 
-        // GET: Cytaty
+        // GET: Cytaty //wygenerowane
         public ActionResult Index()
         {
             var cytaty = db.Cytaty.Include(c => c.Mysliciele);
             return View(cytaty.ToList());
         }
 
-        //do strony ostatnio dodane cytaty
+        //do strony ostatnio dodane cytaty moja akcja plus moj widok
         public ActionResult OstatnioDodane()
         {
             var cytaty = db.Cytaty.Include(c => c.Mysliciele);
@@ -31,7 +31,7 @@ namespace Cytaty.Controllers
 
 
 
-        // GET: Cytaty/Details/5
+        // GET: Cytaty/Details/5 //wygenerowane
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -46,11 +46,11 @@ namespace Cytaty.Controllers
             return View(cytaty);
         }
 
-        // GET: Cytaty/Create
+        // GET: Cytaty/Create /wygenerowane
         public ActionResult Create()
         {
             ViewBag.ID_Mysliciel = new SelectList(db.Mysliciele, "ID_Mysliciel", "Mysliciel");
-            ViewBag.ID_SlowoKlucz = new SelectList(db.SłowaKluczowe, "ID_SlowoKlucz", "Tag");
+            ViewBag.ID_SlowoKlucz = new SelectList(db.SłowaKluczowe, "ID_SlowoKlucz", "Tag"); //dodane, zeby zadzialal dropdown w widoku
             return View();
            
         }
@@ -65,6 +65,7 @@ namespace Cytaty.Controllers
         {
             if (ModelState.IsValid)
             {
+                //zaciaganie daty ustawione
                 cytaty.DataDodania = DateTime.Now;
                 cytaty.DataEdycji = DateTime.Now;
                 db.Cytaty.Add(cytaty);
@@ -88,6 +89,7 @@ namespace Cytaty.Controllers
             {
                 return HttpNotFound();
             }
+            //dodane zeby byl dropdown
             ViewBag.ID_Mysliciel = new SelectList(db.Mysliciele, "ID_Mysliciel", "Mysliciel", cytaty.ID_Mysliciel);
             ViewBag.ID_SlowoKlucz = new SelectList(db.SłowaKluczowe, "ID_SlowoKlucz", "Tag");
             return View(cytaty);
